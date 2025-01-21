@@ -8,6 +8,13 @@ namespace old_phone_pad_coding_challenge
 {
     class Program
     {
+        /// <summary>
+        /// Convert number to char from old phone pad
+        /// </summary>
+        /// <param name="input">phone input string</param>
+        /// <returns>
+        /// A converted string
+        /// </returns>
         public static String OldPhonePad(string input)
         {
             input = input.Trim();
@@ -40,7 +47,7 @@ namespace old_phone_pad_coding_challenge
                         output = output.Substring(0, output.Length - 1);
                     }
 
-                    if (!phonePadMap.ContainsKey(firstChar))
+                    if (!phonePadMap.ContainsKey(firstChar)) // Skip next if invalid char
                     {
                         firstChar = input[i];
                         counter = 0;
@@ -50,7 +57,7 @@ namespace old_phone_pad_coding_challenge
                     output += phonePadMap[firstChar][counter];
                     counter = 0;
                     firstChar = input[i];
-                    continue;
+                    continue; // Skip not to increase counter
                 }
 
                 counter++;
