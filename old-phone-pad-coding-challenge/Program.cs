@@ -28,28 +28,28 @@ namespace old_phone_pad_coding_challenge
                 { '9', new char[] { 'W', 'X', 'Y', 'Z' } },
             };
             string output = "";
-            char firstWord = input[0]; // To mark first word to compare
+            char firstChar = input[0]; // To mark first word to compare
             int counter = 0;
 
             for (int i = 1; i < input.Length; i++)
             {
-                if (firstWord != input[i] || counter == 2)
+                if (firstChar != input[i] || counter == 2)
                 {
-                    if (firstWord == '*')
+                    if (firstChar == '*') // Backspace
                     {
                         output = output.Substring(0, output.Length - 1);
                     }
 
-                    if (!phonePadMap.ContainsKey(firstWord))
+                    if (!phonePadMap.ContainsKey(firstChar))
                     {
-                        firstWord = input[i];
+                        firstChar = input[i];
                         counter = 0;
                         continue;
                     }
 
-                    output += phonePadMap[firstWord][counter];
+                    output += phonePadMap[firstChar][counter];
                     counter = 0;
-                    firstWord = input[i];
+                    firstChar = input[i];
                     continue;
                 }
 
@@ -72,6 +72,7 @@ namespace old_phone_pad_coding_challenge
             Console.ReadLine();
         }
 
+        // Test and return Pass or Fail
         private static string Test(string input, string expected)
         {
             string result = OldPhonePad(input);
